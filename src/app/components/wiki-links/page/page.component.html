@@ -24,4 +24,9 @@
   </nav>
   
   <h1>🧩</h1>
+
+  <form (ngSubmit)="search()" #f="ngForm">
+      <input type="text" class="form-control" id="wiki-search" placeholder="search for topics">
+      <button type="submit" class="btn btn-dark btn-block">Search</button>
+  </form>
 </div>
