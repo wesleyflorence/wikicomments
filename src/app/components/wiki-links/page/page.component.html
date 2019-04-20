@@ -42,4 +42,12 @@
       <button type="submit" class="btn btn-dark btn-block">Search</button>
       </div>
   </form>
+
+  <div class="container-fluid cl-container-padding">
+    <ul *ngFor="let result of results" class="list-group list-group-flush">
+      <li class="list-group-item">
+        <p>{{result.title}}</p>
+      </li>
+    </ul>
+  </div>
 </div>

@@ -14,6 +14,7 @@ export class PageComponent implements OnInit {
   username: string;
   loggedIn: boolean;
   searchTerm: string;
+  results = [];
 
   constructor(private router: Router, private sharedService: SharedService, private wikipediaSearch: WikipediaSearch) { 
     if (this.sharedService.loggedIn) {
@@ -30,7 +31,16 @@ export class PageComponent implements OnInit {
   search() {
     this.searchTerm = this.searchForm.value.wikisearch;
     this.wikipediaSearch.search(this.searchTerm).subscribe((data: any) => {
-      console.log(data);
+      // console.log(data);
+      let len = data[1].length;
+      for (var i = 0; i<len; i++) {
+        this.results[i] = {
+          'title' : data[1][i], 
+          'domain': data[3][i], 
+          'description': data[2][i]
+        };
+      }
+      console.log(this.results);
     });
   }
 
