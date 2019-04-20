@@ -15,7 +15,6 @@ export class ProfileComponent implements OnInit {
   constructor(private router: Router, private userService: UserService, private activatedRoute: ActivatedRoute, private sharedService: SharedService) { }
 
   ngOnInit() {
-    console.log(this.sharedService.user);
     this.username = this.sharedService.user['username'];
     this.date = this.sharedService.user['dateCreated'];
   }

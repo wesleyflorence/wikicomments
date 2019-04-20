@@ -47,7 +47,6 @@ export class UserService {
             (res: any) => {
               const user = res;
               if (user != '0') {
-                  console.log(user);
                 this.sharedService.user = user;
                 return true;
               } else {

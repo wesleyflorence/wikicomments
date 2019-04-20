@@ -16,10 +16,8 @@ export class HomeComponent implements OnInit {
     if (this.sharedService.loggedIn) {
       this.loggedIn = true;
       this.username = this.sharedService.user['username'];
-      console.log("LOGGED IN");
     } else {
       this.loggedIn = false;
-      console.log("LOGGED OUT");
     }
   }
 

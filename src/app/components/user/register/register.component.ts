@@ -37,7 +37,6 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/', 'profile']);
       }),
       (error: any) => {
-        console.log("ERROR" + error);
         this.errorMessage = error._body;
         this.errorFlag = true;
       };
