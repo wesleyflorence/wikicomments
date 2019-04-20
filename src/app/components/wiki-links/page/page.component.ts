@@ -40,7 +40,6 @@ export class PageComponent implements OnInit {
           'description': data[2][i]
         };
       }
-      console.log(this.results);
     });
   }
 
