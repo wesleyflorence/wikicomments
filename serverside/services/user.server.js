@@ -6,6 +6,7 @@ var bcrypt = require('bcrypt-nodejs');
 module.exports = function(app) {
     app.post('/api/login', passport.authenticate('local'), login);
     app.post ('/api/register', register);
+    app.post('/api/logout', logout);
     
     passport.use(new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
@@ -47,6 +48,12 @@ module.exports = function(app) {
         var user = req.user;
         res.json(user);
     }
+    
+    function logout(req, res) {
+        req.logout();
+        res.json("success");
+        return;
+      }
 
     // function createUser(req, res) {
     //     var user = req.body;

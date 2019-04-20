@@ -33,4 +33,11 @@ export class UserService {
             return data;
         });
     }
+
+    logout() {
+        return this._http.post(this.baseUrl + '/api/logout', '', { withCredentials: true }).map((res: any) => {
+            const data = res;
+            return data;
+        })
+    }
 }

@@ -20,4 +20,12 @@ export class ProfileComponent implements OnInit {
     this.date = this.sharedService.user['dateCreated'];
   }
 
+  logout() {
+    this.userService.logout().subscribe((data: any) => {
+      this.sharedService.user = {};
+      this.sharedService.loggedIn = false;
+      this.router.navigate(['/']);
+    });
+  }
+
 }

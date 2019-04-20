@@ -27,14 +27,17 @@ export class LoginComponent implements OnInit {
     this.username = this.loginForm.value.username;
     this.password = this.loginForm.value.password;
     this.userService.login(this.username, this.password).subscribe((user: any) => {
+      console.log(user);
       if (user) {
         this.sharedService.user = user;
+        this.sharedService.loggedIn = true;
         this.router.navigate(['/', 'profile']);
       } else {
         this.errorFlag = true;
       }
+    },(error: any) => {
+        this.errorFlag = true;
     });
-    console.log(this.username, this.password);
   }
 
 }
