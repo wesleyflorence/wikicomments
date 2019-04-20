@@ -44,4 +44,8 @@ export class PageComponent implements OnInit {
     });
   }
 
+  postArticle() {
+    console.log("posting article");
+  }
+
 }
