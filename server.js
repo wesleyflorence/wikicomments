@@ -6,23 +6,23 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const app = express();
 
-// const passport = require('passport');
-// const cookieParser = require('cookie-parser');
-// const session = require('express-session');
+const passport = require('passport');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 
 
-// app.use(session({
-//   secret: 'this is a secret',
-//   resave: true,
-//   saveUninitialized: true
-// }));
+app.use(session({
+  secret: 'this is a secret',
+  resave: true,
+  saveUninitialized: true
+}));
 
-// app.use(cookieParser());
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Point static path to dist -- For building -- REMOVE
 app.use(express.static(path.join(__dirname, 'dist/wiki-comments-angular')));
@@ -44,16 +44,16 @@ app.set('port', port);
 const server = http.createServer(app);
 server.listen( port , () => console.log('Running on port 3200'));
 
-// var connectionString = 'mongodb://127.0.0.1:27017/wiki';
+var connectionString = 'mongodb://127.0.0.1:27017/wiki';
 // var connectionString = 'mongodb://heroku_x5h3vp7m:jsFshmWrnm4k@ds015720.mlab.com:15720/heroku_x5h3vp7m';
 // var connectionString = process.env.MONGODB_URI;
-// var mongoose = require("mongoose");
-// mongoose.Promise = global.Promise;
-// const client = mongoose.connect( connectionString, { useNewUrlParser: true });
+var mongoose = require("mongoose");
+mongoose.Promise = global.Promise;
+const client = mongoose.connect( connectionString, { useNewUrlParser: true });
 
 //Get the default connection
-// var db = mongoose.connection;
+var db = mongoose.connection;
 //Bind connection to error event (to get notification of connection errors)
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-// require('./assignment/app')(app);
+require('./serverside/app')(app);
