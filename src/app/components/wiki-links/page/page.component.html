@@ -22,11 +22,24 @@
       </div>
     </div>
   </nav>
-  
-  <h1>🧩</h1>
 
+<p></p>
+  <h5>Post an Article</h5>
+<p></p>
   <form (ngSubmit)="search()" #f="ngForm">
-      <input type="text" class="form-control" id="wiki-search" placeholder="search for topics">
+      <div class="p-1">
+      <input 
+      type="text" 
+      class="form-control" 
+      id="wikisearch" 
+      name="wikisearch"
+      placeholder="search for topics"
+      ngModel
+      required
+      #wikisearch="ngModel">
+      </div>
+      <div class="p-1">
       <button type="submit" class="btn btn-dark btn-block">Search</button>
+      </div>
   </form>
 </div>

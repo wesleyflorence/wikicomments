@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/client_services/shared.service';
 import { NgForm } from '@angular/forms';
+import { WikipediaSearch } from 'src/app/client_services/wikipedia.search.service';
 
 @Component({
   selector: 'app-page',
@@ -9,12 +10,12 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./page.component.css']
 })
 export class PageComponent implements OnInit {
-  @ViewChild('f') loginForm: NgForm;
+  @ViewChild('f') searchForm: NgForm;
   username: string;
   loggedIn: boolean;
-  wikipedia_url = 'https://en.wikipedia.org/w/api.php';
+  searchTerm: string;
 
-  constructor(private router: Router, private sharedService: SharedService) { 
+  constructor(private router: Router, private sharedService: SharedService, private wikipediaSearch: WikipediaSearch) { 
     if (this.sharedService.loggedIn) {
       this.loggedIn = true;
       this.username = this.sharedService.user['username'];
@@ -27,7 +28,10 @@ export class PageComponent implements OnInit {
   }
 
   search() {
-
+    this.searchTerm = this.searchForm.value.wikisearch;
+    this.wikipediaSearch.search(this.searchTerm).subscribe((data: any) => {
+      console.log(data);
+    });
   }
 
 }
