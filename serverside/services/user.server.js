@@ -7,6 +7,7 @@ module.exports = function(app) {
     app.post('/api/login', passport.authenticate('local'), login);
     app.post ('/api/register', register);
     app.post('/api/logout', logout);
+    app.post('/api/loggedin', loggedIn);
     
     passport.use(new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
@@ -48,28 +49,16 @@ module.exports = function(app) {
         var user = req.user;
         res.json(user);
     }
-    
+
     function logout(req, res) {
         req.logout();
         res.json("success");
         return;
-      }
+    }
 
-    // function createUser(req, res) {
-    //     var user = req.body;
-    //     userModel.createUser(user).then(
-    //         function (user) {
-    //             console.log("user created!");
-    //             res.json(user);
-    //         },
-    //         function (error) {
-    //             if (error) {
-    //                 console.log(error);
-    //                 res.statusCode(400).send(error);
-    //             }
-    //         }
-    //     );
-    // }
+    function loggedIn(req, res) {
+        res.send(req.isAuthenticated() ? req.user : '0');
+    }
 
     function register(req, res) {
         var user = req.body;

@@ -12,6 +12,7 @@ import { RegisterComponent } from './components/user/register/register.component
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { UserService } from './client_services/user.service';
 import { SharedService } from './client_services/shared.service';
+import { AuthGuard } from './client_services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { SharedService } from './client_services/shared.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService, SharedService],
+  providers: [UserService, SharedService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

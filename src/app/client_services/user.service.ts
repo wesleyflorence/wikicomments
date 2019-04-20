@@ -40,4 +40,21 @@ export class UserService {
             return data;
         })
     }
+
+    loggedIn() {
+        return this._http.post(this.baseUrl + '/api/loggedIn', '', { withCredentials: true })
+          .map(
+            (res: any) => {
+              const user = res;
+              if (user != '0') {
+                  console.log(user);
+                this.sharedService.user = user;
+                return true;
+              } else {
+                this.router.navigate(['/login']);
+                return false;
+              }
+            }
+          );
+      }
 }
