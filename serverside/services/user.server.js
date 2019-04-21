@@ -113,12 +113,13 @@ module.exports = function(app) {
               if(user) {
                 return done(null, user);
               } else {
-                // var names = profile.displayName.split(" ");
+                var names = profile.displayName.split(" ");
                 var newFacebookUser = {
                 //   lastName: names[1],
                 //   firstName: names[0],
-                  username: profile.displayName,
-                  facebook: { id: profile.id, token: token } };
+                  username: names[0],
+                  facebook: { id: profile.id, token: token } 
+                };
                 return userModel.createUser(newFacebookUser);
               }
             }, function(err) {
