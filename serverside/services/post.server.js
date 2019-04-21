@@ -52,7 +52,6 @@ module.exports = function(app) {
       },
       function (err) {
         res.statusCode(400).send(err);
-
       }
     );
 }
