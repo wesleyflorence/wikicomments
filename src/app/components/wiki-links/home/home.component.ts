@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, private sharedService: SharedService, private postService: PostService) { 
     this.postService.findAllPosts().subscribe((data: any) => {
       this.all_posts = data;
+      this.all_posts.reverse();
     });
 
     if (this.sharedService.loggedIn) {

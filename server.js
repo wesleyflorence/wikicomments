@@ -44,9 +44,9 @@ app.set('port', port);
 const server = http.createServer(app);
 server.listen( port , () => console.log('Running on port 3200'));
 
-var connectionString = 'mongodb://127.0.0.1:27017/wiki';
+// var connectionString = 'mongodb://127.0.0.1:27017/wiki';
 // var connectionString = 'mongodb://heroku_x5h3vp7m:jsFshmWrnm4k@ds015720.mlab.com:15720/heroku_x5h3vp7m';
-// var connectionString = process.env.MONGODB_URI;
+var connectionString = process.env.MONGODB_URI;
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 const client = mongoose.connect( connectionString, { useNewUrlParser: true });

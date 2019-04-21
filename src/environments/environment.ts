@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // baseUrl: 'https://webdev-florence-cs5610.herokuapp.com'
-  baseUrl: 'http://localhost:3200'
+  baseUrl: 'https://wiki-comments.herokuapp.com'
+  // baseUrl: 'http://localhost:3200'
 };
 /*
  * For easier debugging in development mode, you can import the following file
