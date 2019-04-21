@@ -30,5 +30,14 @@ export class PostService {
         return this._http.get(this.baseUrl + '/api/post');
     }
 
+    findPostByUser(userId: string) {
+        return this._http.get(this.baseUrl+ '/api/user/'+userId+'/post');
+    }
+
+    deletePost(postId: string) {
+        var url = this.baseUrl + '/api/post/' + postId;
+        return this._http.delete(url);
+    }
+
 
 }

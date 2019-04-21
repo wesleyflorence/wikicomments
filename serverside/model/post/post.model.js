@@ -31,7 +31,7 @@ function createPost(userId,post) {
   }
   
   function findAllPostForUser(userId) {
-    return postModel.find({developerId:userId});
+    return postModel.find({userId:userId});
   }
   
   function findPostById(id) {
