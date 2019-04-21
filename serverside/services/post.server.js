@@ -8,7 +8,6 @@ module.exports = function(app) {
     var postModel = require('../model/post/post.model');
 
     function createPost(req, res) {
-        console.log("HELLO");
         var userId = req.params.userId;
         var post = req.body;
         postModel.createPost(userId,post)

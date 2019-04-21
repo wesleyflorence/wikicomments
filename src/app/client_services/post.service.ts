@@ -18,10 +18,17 @@ export class PostService {
             'title' : title,
             'domain': url,
             'description': description,
-            'comment' : comment
+            'comment' : comment,
+            'username' : this.sharedService.user['username']
         }
+        console.log(articleBody);
         var url = this.baseUrl + '/api/user/' + this.sharedService.user['_id'] + '/article';
-        console.log(url);
         return this._http.post(url, articleBody);
     }
+
+    findAllPosts() {
+        return this._http.get(this.baseUrl + '/api/post');
+    }
+
+
 }
