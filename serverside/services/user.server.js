@@ -8,13 +8,6 @@ module.exports = function(app) {
     app.post ('/api/register', register);
     app.post('/api/logout', logout);
     app.post('/api/loggedin', loggedIn);
-    
-    passport.use(new LocalStrategy(localStrategy));
-    passport.serializeUser(serializeUser);
-    passport.deserializeUser(deserializeUser);
-    passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
-    
-    var userModel = require('../model/user/user.model');
 
     var facebookConfig = {
         clientID     : process.env.FB_CLIENT_ID_WAM,
@@ -33,6 +26,13 @@ module.exports = function(app) {
         successRedirect: '/#/profile', 
         failureRedirect: '/#/login' 
     }));
+    
+    passport.use(new LocalStrategy(localStrategy));
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
+    passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+    
+    var userModel = require('../model/user/user.model');
   
     
     function localStrategy(username, password, done) {
