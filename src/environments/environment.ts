@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://wiki-comments.herokuapp.com'
+  baseUrl: 'https://wikicomments.herokuapp.com'
   // baseUrl: 'http://localhost:3200'
 };
 /*
