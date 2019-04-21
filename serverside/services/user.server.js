@@ -26,6 +26,8 @@ module.exports = function(app) {
         successRedirect: '/#/profile', 
         failureRedirect: '/#/login' 
     }));
+
+    app.get ('/facebook/login', passport.authenticate('facebook', { scope : 'email' }));
     
     passport.use(new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
