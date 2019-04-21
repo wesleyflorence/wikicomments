@@ -17,7 +17,6 @@ export class ProfileComponent implements OnInit {
   constructor(private router: Router, private userService: UserService, private activatedRoute: ActivatedRoute, private sharedService: SharedService, private postService: PostService) { 
     this.postService.findPostByUser(this.sharedService.user['_id']).subscribe((data: any) => {
       this.user_posts = data;
-      console.log(data);
     });
   }
 
@@ -38,7 +37,6 @@ export class ProfileComponent implements OnInit {
     this.postService.deletePost(id).subscribe((data: any) => {
       this.postService.findPostByUser(this.sharedService.user['_id']).subscribe((data: any) => {
         this.user_posts = data;
-        console.log(data);
       });
     });
 

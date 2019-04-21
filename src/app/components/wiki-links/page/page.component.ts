@@ -33,7 +33,6 @@ export class PageComponent implements OnInit {
   search() {
     this.searchTerm = this.searchForm.value.wikisearch;
     this.wikipediaSearch.search(this.searchTerm).subscribe((data: any) => {
-      // console.log(data);
       let len = data[1].length;
       for (var i = 0; i<len; i++) {
         this.results[i] = {
@@ -46,14 +45,9 @@ export class PageComponent implements OnInit {
   }
 
   postArticle(title: string, url: string, description: string, comment: string) {
-    console.log(title);
-    console.log(url);
-    console.log(description);
-    console.log(comment);
     this.postService.postArticle(title, url, description, comment).subscribe((data: any) => {
       this.router.navigateByUrl('/');
     });
-    console.log("posting article");
   }
 
 }

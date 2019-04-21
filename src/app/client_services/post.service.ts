@@ -21,7 +21,6 @@ export class PostService {
             'comment' : comment,
             'username' : this.sharedService.user['username']
         }
-        console.log(articleBody);
         var url = this.baseUrl + '/api/user/' + this.sharedService.user['_id'] + '/article';
         return this._http.post(url, articleBody);
     }
