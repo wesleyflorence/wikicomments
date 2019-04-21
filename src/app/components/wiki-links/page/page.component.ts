@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { SharedService } from 'src/app/client_services/shared.service';
 import { NgForm } from '@angular/forms';
 import { WikipediaSearch } from 'src/app/client_services/wikipedia.search.service';
+import { PostService } from 'src/app/client_services/post.service';
 
 @Component({
   selector: 'app-page',
@@ -15,8 +16,9 @@ export class PageComponent implements OnInit {
   loggedIn: boolean;
   searchTerm: string;
   results = [];
+  userId: string;
 
-  constructor(private router: Router, private sharedService: SharedService, private wikipediaSearch: WikipediaSearch) { 
+  constructor(private router: Router, private sharedService: SharedService, private wikipediaSearch: WikipediaSearch, private postService: PostService) { 
     if (this.sharedService.loggedIn) {
       this.loggedIn = true;
       this.username = this.sharedService.user['username'];
@@ -43,7 +45,14 @@ export class PageComponent implements OnInit {
     });
   }
 
-  postArticle() {
+  postArticle(title: string, url: string, description: string, comment: string) {
+    console.log(title);
+    console.log(url);
+    console.log(description);
+    console.log(comment);
+    this.postService.postArticle(title, url, description, comment).subscribe((data: any) => {
+      this.router.navigateByUrl('/');
+    });
     console.log("posting article");
   }
 

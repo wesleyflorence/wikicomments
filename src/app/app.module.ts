@@ -14,6 +14,7 @@ import { UserService } from './client_services/user.service';
 import { SharedService } from './client_services/shared.service';
 import { AuthGuard } from './client_services/auth-guard.service';
 import { WikipediaSearch } from './client_services/wikipedia.search.service';
+import { PostService } from './client_services/post.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { WikipediaSearch } from './client_services/wikipedia.search.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService, SharedService, AuthGuard, WikipediaSearch],
+  providers: [UserService, SharedService, AuthGuard, WikipediaSearch, PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

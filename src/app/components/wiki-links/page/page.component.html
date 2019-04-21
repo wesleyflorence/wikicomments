@@ -52,7 +52,27 @@
       <li class="list-group-item py-1">
             <b>{{result.title}}</b>
             <p class="font-weight-light">{{result.description}} <a href="{{result.domain}}" target="_blank"><i class="fas fa-link"></i></a></p>
-            <button (click)="postArticle()" type="button" class="btn btn-outline-dark btn-sm">Post</button>
+            <form>
+              <div class="input-group">
+                <input 
+                type="text" 
+                class="form-control" 
+                id="comment" 
+                name="comment"
+                placeholder="Share with a comment"
+                ngModel
+                required
+                #comment="ngModel">
+                <span class="input-group-btn"> <div class="ml-4">
+            <button 
+            [disabled]="!f.valid" 
+            (click)="postArticle(result.title, result.domain, result.description, comment.value)" 
+            type="button" 
+            class="btn btn-outline-dark mb-2">Post</button>
+          </div>
+          </span>
+          </div>
+            </form>
       </li>
     </ul>
   </div>
